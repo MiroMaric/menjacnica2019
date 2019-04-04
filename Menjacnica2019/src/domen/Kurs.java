@@ -15,7 +15,8 @@ public class Kurs {
 	}
 
 	public Kurs(int prodajni, int srednji, int kupovni, GregorianCalendar datum) {
-		super();
+		if(prodajni<=0 || srednji<=0 || kupovni<=0 || datum==null)
+			throw new RuntimeException("Prodajni, srednji i kupovni kurs moraju biti pozitivni. Datum mora biti validan");
 		this.prodajni = prodajni;
 		this.srednji = srednji;
 		this.kupovni = kupovni;
@@ -27,6 +28,8 @@ public class Kurs {
 	}
 
 	public void setProdajni(int prodajni) {
+		if(prodajni<=0)
+			throw new RuntimeException("Prodajni kurs mora biti pozitivan");
 		this.prodajni = prodajni;
 	}
 
@@ -35,6 +38,8 @@ public class Kurs {
 	}
 
 	public void setSrednji(int srednji) {
+		if(srednji<=0)
+			throw new RuntimeException("Srednji kurs mora biti pozitivan");
 		this.srednji = srednji;
 	}
 
@@ -43,6 +48,8 @@ public class Kurs {
 	}
 
 	public void setKupovni(int kupovni) {
+		if(kupovni<=0)
+			throw new RuntimeException("Kupovni kurs mora biti pozitivan");
 		this.kupovni = kupovni;
 	}
 
@@ -51,6 +58,8 @@ public class Kurs {
 	}
 
 	public void setDatum(GregorianCalendar datum) {
+		if(datum==null)
+			throw new RuntimeException("Datum mora biti validan");
 		this.datum = datum;
 	}
 

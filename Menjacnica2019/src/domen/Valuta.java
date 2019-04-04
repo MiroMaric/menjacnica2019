@@ -14,12 +14,16 @@ public class Valuta {
 	}
 
 	public Valuta(String naziv, String skracenNaziv) {
-		this();
+		if(naziv==null || naziv.isEmpty() || skracenNaziv==null || skracenNaziv.isEmpty())
+			throw new RuntimeException("Naziv i skracen valute naziv moraju biti validni");
+		dnevniKursevi = new HashMap<>();
 		this.naziv = naziv;
 		this.skracenNaziv = skracenNaziv;
 	}
 
 	public Valuta(String naziv, String skracenNaziv, HashMap<String, Kurs> dnevniKursevi) {
+		if(naziv==null || naziv.isEmpty() || skracenNaziv==null || skracenNaziv.isEmpty() || dnevniKursevi==null)
+			throw new RuntimeException("Naziv i skracen valute i dnevni kursevi naziv moraju biti validni");
 		this.naziv = naziv;
 		this.skracenNaziv = skracenNaziv;
 		this.dnevniKursevi = dnevniKursevi;
@@ -30,6 +34,8 @@ public class Valuta {
 	}
 
 	public void setNaziv(String naziv) {
+		if(naziv==null || naziv.isEmpty())
+			throw new RuntimeException("Naziv valute mora biti validan");
 		this.naziv = naziv;
 	}
 
@@ -38,6 +44,8 @@ public class Valuta {
 	}
 
 	public void setSkracenNaziv(String skracenNaziv) {
+		if(skracenNaziv==null || skracenNaziv.isEmpty())
+			throw new RuntimeException("Skacen naziv valute mora biti validan");
 		this.skracenNaziv = skracenNaziv;
 	}
 
@@ -46,6 +54,8 @@ public class Valuta {
 	}
 
 	public void setDnevniKursevi(HashMap<String, Kurs> dnevniKursevi) {
+		if(dnevniKursevi==null)
+			throw new RuntimeException("Dnevni kursevi moraju biti validni");
 		this.dnevniKursevi = dnevniKursevi;
 	}
 
