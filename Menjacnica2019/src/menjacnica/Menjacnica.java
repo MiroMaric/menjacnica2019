@@ -62,6 +62,4 @@ public class Menjacnica implements IMenjacnica{
 		}
 		throw new RuntimeException("Ne postoji data valuta");
 	}
-	
-
 }
