@@ -5,16 +5,16 @@ import java.util.GregorianCalendar;
 
 public class Kurs {
 	
-	private int prodajni;
-	private int srednji;
-	private int kupovni;
+	private double prodajni;
+	private double srednji;
+	private double kupovni;
 	private GregorianCalendar datum;
 	
 	public Kurs() {
 		
 	}
 
-	public Kurs(int prodajni, int srednji, int kupovni, GregorianCalendar datum) {
+	public Kurs(double prodajni, double srednji, double kupovni, GregorianCalendar datum) {
 		if(prodajni<=0 || srednji<=0 || kupovni<=0 || datum==null)
 			throw new RuntimeException("Prodajni, srednji i kupovni kurs moraju biti pozitivni. Datum mora biti validan");
 		this.prodajni = prodajni;
@@ -23,31 +23,31 @@ public class Kurs {
 		this.datum = datum;
 	}
 
-	public int getProdajni() {
+	public double getProdajni() {
 		return prodajni;
 	}
 
-	public void setProdajni(int prodajni) {
+	public void setProdajni(double prodajni) {
 		if(prodajni<=0)
 			throw new RuntimeException("Prodajni kurs mora biti pozitivan");
 		this.prodajni = prodajni;
 	}
 
-	public int getSrednji() {
+	public double getSrednji() {
 		return srednji;
 	}
 
-	public void setSrednji(int srednji) {
+	public void setSrednji(double srednji) {
 		if(srednji<=0)
 			throw new RuntimeException("Srednji kurs mora biti pozitivan");
 		this.srednji = srednji;
 	}
 
-	public int getKupovni() {
+	public double getKupovni() {
 		return kupovni;
 	}
 
-	public void setKupovni(int kupovni) {
+	public void setKupovni(double kupovni) {
 		if(kupovni<=0)
 			throw new RuntimeException("Kupovni kurs mora biti pozitivan");
 		this.kupovni = kupovni;
@@ -63,16 +63,18 @@ public class Kurs {
 		this.datum = datum;
 	}
 
-	
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((datum == null) ? 0 : datum.hashCode());
-		result = prime * result + kupovni;
-		result = prime * result + prodajni;
-		result = prime * result + srednji;
+		long temp;
+		temp = Double.doubleToLongBits(kupovni);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(prodajni);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		temp = Double.doubleToLongBits(srednji);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
 		return result;
 	}
 
